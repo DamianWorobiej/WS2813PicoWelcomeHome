@@ -2,8 +2,8 @@ from neopixel import NeoPixel
 from machine import Pin
 
 class LedStrip():
-    def __init__(self, pin: Pin, led_count: int, signal_diode_index: int | None = None) -> None:
-        self.led_array = NeoPixel(pin, led_count)
+    def __init__(self, pin_number: int, led_count: int, signal_diode_index: int | None = None) -> None:
+        self.led_array = NeoPixel(Pin(pin_number), led_count)
         self.signaling_set_up = signal_diode_index is not None
         self.signal_diode_index = signal_diode_index
         self.signaling = False
