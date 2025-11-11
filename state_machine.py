@@ -1,4 +1,3 @@
-import rp2
 from rp2 import PIO, asm_pio
 from rp2 import StateMachine as BaseStateMachine
 from machine import Pin
