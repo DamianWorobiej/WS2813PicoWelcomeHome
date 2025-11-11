@@ -28,7 +28,8 @@ class PicoZeroLed(LedBase):
         self.led = NeoPixel(Pin(16), 1)
 
     def on(self):
-        self.led[0] = RGB.White
+        brightness = 0.5
+        self.led[0] = ((int)(RGB.White[0] * brightness), (int)(RGB.White[1] * brightness), (int)(RGB.White[2] * brightness))
         self.led.write()
 
     def off(self):
