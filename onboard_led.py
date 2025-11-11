@@ -37,7 +37,7 @@ class PicoZeroLed(LedBase):
 
 class PicoLed(LedBase):
     def __init__(self) -> None:
-        self.led = Pin(16, Pin.OUT)
+        self.led = Pin(25, Pin.OUT)
 
     def on(self):
         self.led.value(1)
