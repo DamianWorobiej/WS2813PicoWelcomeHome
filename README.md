@@ -75,6 +75,10 @@ Ultimately [this video](https://www.youtube.com/watch?v=TTsP35xeigA) was my savi
 
 The issue might have been with pico using 3.3V output for GPIOs while strip operates on 5V and using logic level shifter would solve this, but I've got it to work now and if something stops working it's Future Me's problem, not mine. Screw that guy.
 
+## Power saving
+
+Unfortunately as per for example [this comment here](https://raspberrypi.stackexchange.com/questions/149364/micropython-how-to-wake-pi-pico-pico-w-pico-2-from-sleep-using-gpio-button#comment255964_149364), Pico is not doing great with sleep functions. In theory logic is not really that complicated as you can see in MicroPython's [power related functions](https://docs.micropython.org/en/latest/library/machine.html#power-related-functions) and [interrupt setup](https://docs.micropython.org/en/latest/library/machine.Pin.html#machine.Pin.irq), but this just did not work for me. Fortunately our Lord and Saviour Tom [came to the rescue](https://github.com/tomjorquera/pico-micropython-lowpower-workaround). Whole lowpower.py is straight up copy of his code and at least at the start of me playing around with it seems to work just fine.
+
 # Potential next steps
 
 - Battery powah. Plug-free is stress-free
