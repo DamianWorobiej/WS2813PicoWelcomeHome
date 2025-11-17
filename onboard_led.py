@@ -1,5 +1,6 @@
 from machine import Pin
-from neopixel import NeoPixel
+from neopixel import NeoPixel # type: ignore
+from led_strips import NeoPixelStrip
 from enums import Board, GRB
 
 class OnboardLed():
@@ -25,16 +26,14 @@ class LedBase():
 
 class PicoZeroLed(LedBase):
     def __init__(self) -> None:
-        self.led = NeoPixel(Pin(16), 1)
+        self.led = NeoPixelStrip(16, 1)
 
     def on(self):
         brightness = 0.5
-        self.led[0] = ((int)(GRB.White[0] * brightness), (int)(GRB.White[1] * brightness), (int)(GRB.White[2] * brightness))
-        self.led.write()
+        self.led.update_one(GRB.White, brightness, 0)
 
     def off(self):
-        self.led[0] = GRB.Off
-        self.led.write()
+        self.led.update_one(GRB.Off, 1, 0)
 
 class PicoLed(LedBase):
     def __init__(self) -> None:
