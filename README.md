@@ -34,19 +34,38 @@ I would love to use VS Code, but I'm lazy and couldn't find any out-of-the box s
 
 I followed [this amazing guide](https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico/0) that will guide you through Thonny's setup, how to use it, getting Python on your board and some other basic stuff.
 
+### *On second thought...*
+
+I actually managed to get it to work. I flashed micropython, did some random clicks like initialize micopico project or something and bada bing bada boom I can plug my microcontroller, directly point the right COM port in the settings and stuff just works. Great success!
+
 ## Packages
-- grove_py
-- pico_zero
-- smbus2
+
+See requirements-dev.txt file
 
 # Connecting cables
 
 # Few words about code
 
-https://www.youtube.com/watch?v=TTsP35xeigA
+## "I see a lot of files there for such a simple project, what's up with that?"
+
+I like to abstract stuff a lot. Plus I've got a couple of other projects I will likely ~~steal~~ borrow some modules for (battery level control being the most likely one).
+
+## "Why there are two implementations for led stips?"
+
+That one is strange, not gonna lie.
+
+During development I figured I will do my best to use some library for controlling the strip. Ultimately there **must** have been some lib for that, right?
+
+There was but something was off. Everything was good and dandy with my mighty WS2813 strip when I had my controller connected to my PC, but as soon as I switched to powering pico from outside weird things started to happen. For the life of me I couldn't control first diode on the strip, it was bright red no matter what. Everything besides that was ok, but I just couldn't have that on my "end product".
+
+Ultimately [this video](https://www.youtube.com/watch?v=TTsP35xeigA) was my saving grace. I don't pretend to understand fully what's going on besides that there is some assembly, but it works and that's all I needed.
+
+The issue might have been with pico using 3.3V output for GPIOs while strip operates on 5V and using logic level shifter would solve this, but I've got it to work now and if something stops working it's Future Me's problem, not mine. Screw that guy.
 
 # Potential next steps
 
 - Battery powah. Plug-free is stress-free
 - Power switch, obviously
-- Low battery notification. Let's be surprised by lack of milk, not lack of juice.
+- 3D printed case
+- deep sleep. There's no reason to run the loop constantly with such low usage
+- log saving
