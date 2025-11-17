@@ -42,6 +42,19 @@ I actually managed to get it to work. I flashed micropython, did some random cli
 
 See requirements-dev.txt file
 
+# Hardware
+
+- Raspberry Pico/Waveshare RP2040 Zero (Pico Zero) - I started with regular Pico, but switched into Pico Zero because it's smaller and it is civilized with USB-C
+- WS2813 LED strip - obviously
+- PIR HC-SR501 - motion detector. It was rather cheap, it's adjustable and can send signal continuously for some time
+- WH-373 - battery charger based on TP4056 with built-in safety features. USB-C too, yay!
+- 78L05 - 5V voltage stabilizer. Battery voltage varies and we need solid 5V to power the strip and sensor
+- battery - obviously. I've chosen 3.7V li-pol 2200 mAh
+- universal PCB board - obviously
+- resistors - for voltage divider to control battery level - the one I chose operates on 2.5-4.2 volts while Pico's range ends at 3.3V so that one was needed
+- soldering stuff - duh
+- wires - duh
+
 # Connecting cables
 
 # Few words about code
